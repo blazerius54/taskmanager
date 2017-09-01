@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+<style>
+	/* #add, #in {
+		float: left;
+	} */
+
+	.reset {
+		float: right;
+		box-sizing: border-box;
+		margin-right: 10px;
+	}
+
+	#out {
+		/* float: right; */
+		box-sizing: border-box;
+		border: 1px solid black;
+		border-radius: 5px;
+		margin: 50px auto;
+		padding-left: 20px; 
+		width: 500px;
+		min-height: 20px;
+	}
+
+	.newTask {
+		color: blueviolet;
+	}
+
+	.newDiv {
+		width: 100px;
+		height: 30px;
+		z-index: 100;
+		position: absolute;
+		background-color: rgba(225,225,225, 1);
+		border-radius: 15px;
+		border: 1px solid black;
+		box-shadow:3px 3px 6px #333333;
+		transition: all ease 1s;
+		transition-delay: 1s;
+	}
+
+
+</style>
+</head>
+<script src="js.js"></script>
+<body>
+
+<button id="add">Добавить задачу</button>
+<input type="text" id="in">
+<button id="kilLocalStorage" class="reset">Удалить localStorage</button>
+<button id="refresh" class="reset">Обновить страницу</button>
+<div id="out"><p id="testP">TEST</p></div>
+<p>Aenean in felis eget nisi</p>
+</body>
+<script>
+</script>
+</body>
+
+</html>
