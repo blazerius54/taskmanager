@@ -1,10 +1,10 @@
 window.onload = function () {
-	
-	// var taskArr = [];
+
 	var outerDiv = document.getElementById("out");
 	var button = document.getElementById("add");
 	var kilLocalStorage = document.getElementById("kilLocalStorage");
 	var refresh = document.getElementById("refresh");
+	var mainList = document.getElementById("mainList");
 
 	var newDiv = document.createElement("div");
 	
@@ -13,10 +13,6 @@ window.onload = function () {
 	button.addEventListener("click", showArr);
 	kilLocalStorage.addEventListener("click", clearLocalStorage);
 	refresh.addEventListener("click", refreshPage); 
-
-	// if(localStorage.getItem("taskArr")!=undefined){
-	// 	taskArr = JSON.parse(localStorage.getItem("taskArr"));
-	// };
 
 	if(localStorage.getItem("divIn")!=undefined){
 		outerDiv.innerHTML = localStorage.getItem("divIn");
@@ -27,7 +23,7 @@ window.onload = function () {
 		for (var i = 0; i < favorites.length; i++) {
 			document.getElementById(favorites[i].id).className = (favorites[i].class);
 		}
-	}
+	};
 
 	function getRandom(x) {
 		return parseInt(Math.random()*x);
@@ -42,9 +38,6 @@ window.onload = function () {
 		newTask.className = "newTask";
 		var temp = {};
 		temp.main = task;
-		// temp.check = false;
-		// var i = taskArr.length;
-		// taskArr[i] = temp;
 		newTask.innerHTML = temp.main;
 		newTask.innerHTML.toUpperCase()
 		newTask.addEventListener("click", setSmallDiv);
@@ -59,9 +52,7 @@ window.onload = function () {
 		setStorage();
 
 		document.getElementById("in").value = "";
-		// console.log(taskArr);
 		
-		console.log()
 	};
 
 	for(var j=0; j< document.getElementsByClassName("newTask").length; j++) {
@@ -69,7 +60,6 @@ window.onload = function () {
 	};
 	
 	function setStorage() {
-		// localStorage.setItem("taskArr", JSON.stringify(taskArr));
 		localStorage.setItem("divIn", outerDiv.innerHTML);
 	};
 
@@ -83,7 +73,10 @@ window.onload = function () {
 	
 	function clearTimer(x) {clearTimeout(x)};
 	
+	var liTargetId;
+
 	function setSmallDiv(event) {
+		liTargetId = event.target.id;
 		outerDiv.appendChild(newDiv);
 		newDiv.className = "newDiv";
 		newDiv.style.left = event.clientX + "px";
@@ -96,7 +89,6 @@ window.onload = function () {
 		
 		function setAndSaveClass() {
 			event.target.classList.add("done");
-			console.log(event.target);
 			for (var j = 0; j < document.getElementsByTagName("li").length; j++) {
 				fav = {
 					id: document.getElementsByTagName("li")[j].getAttribute('id'),
@@ -104,19 +96,23 @@ window.onload = function () {
 				};
 				favs.push(fav);
 			}
-			console.log(favs)
 			localStorage.setItem("favorites2", JSON.stringify(favs));
 		};
 		
 		function killTask(evt) {
-			console.log(event.target);
-			
-			event.target.remove();
 			evt.target.parentNode.remove();
+			document.getElementById(liTargetId).remove();
+
 			localStorage.setItem("divIn", outerDiv.innerHTML);
-			console.log(favs);
-		
-		}
+
+			console.log(favs)
+			for(var i=0; i<favs.length; i++) {
+				if(favs[i].id == liTargetId) {
+					favs.splice(i,1)
+				}
+			localStorage.setItem("favorites2", JSON.stringify(favs));
+			}
+		};
 
 		setDone.addEventListener("click", setAndSaveClass);
 		removeTask.addEventListener("click", killTask);
@@ -127,7 +123,7 @@ window.onload = function () {
 					newDiv.remove();
 				}, 1000);
 		
-		newDiv.addEventListener("mouseover", function() {clearTimer(timer); console.log("in");});
+		newDiv.addEventListener("mouseover", function() {clearTimer(timer);});
 		newDiv.addEventListener("mouseleave", removeNewDiv);
 	};
 
@@ -136,6 +132,5 @@ window.onload = function () {
 				function(){
 					newDiv.remove();
 				}, 1000);
-				console.log("out");
 	};
 };
