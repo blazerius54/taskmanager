@@ -5,6 +5,7 @@ window.onload = function () {
 	var button = document.getElementById("add");
 	var kilLocalStorage = document.getElementById("kilLocalStorage");
 	var refresh = document.getElementById("refresh");
+	var mainList = document.getElementById("mainList")
 
 	var newDiv = document.createElement("div");
 	
@@ -83,7 +84,10 @@ window.onload = function () {
 	
 	function clearTimer(x) {clearTimeout(x)};
 	
+	var liTargetId;
+
 	function setSmallDiv(event) {
+		liTargetId = event.target.id;
 		outerDiv.appendChild(newDiv);
 		newDiv.className = "newDiv";
 		newDiv.style.left = event.clientX + "px";
@@ -96,7 +100,6 @@ window.onload = function () {
 		
 		function setAndSaveClass() {
 			event.target.classList.add("done");
-			console.log(event.target);
 			for (var j = 0; j < document.getElementsByTagName("li").length; j++) {
 				fav = {
 					id: document.getElementsByTagName("li")[j].getAttribute('id'),
@@ -104,17 +107,16 @@ window.onload = function () {
 				};
 				favs.push(fav);
 			}
-			console.log(favs)
+			// console.log(favs)
 			localStorage.setItem("favorites2", JSON.stringify(favs));
 		};
 		
 		function killTask(evt) {
-			console.log(event.target);
-			
-			event.target.remove();
 			evt.target.parentNode.remove();
+			document.getElementById(liTargetId).remove();
+
 			localStorage.setItem("divIn", outerDiv.innerHTML);
-			console.log(favs);
+			console.log(evt.target.parenNode)
 		
 		}
 
@@ -127,7 +129,7 @@ window.onload = function () {
 					newDiv.remove();
 				}, 1000);
 		
-		newDiv.addEventListener("mouseover", function() {clearTimer(timer); console.log("in");});
+		newDiv.addEventListener("mouseover", function() {clearTimer(timer);});
 		newDiv.addEventListener("mouseleave", removeNewDiv);
 	};
 
@@ -136,6 +138,5 @@ window.onload = function () {
 				function(){
 					newDiv.remove();
 				}, 1000);
-				console.log("out");
 	};
 };
