@@ -4,7 +4,7 @@ window.onload = function () {
 	var button = document.getElementById("add");
 	var kilLocalStorage = document.getElementById("kilLocalStorage");
 	var refresh = document.getElementById("refresh");
-	var mainList = document.getElementById("mainList")
+	var mainList = document.getElementById("mainList");
 
 	var newDiv = document.createElement("div");
 	
@@ -23,7 +23,7 @@ window.onload = function () {
 		for (var i = 0; i < favorites.length; i++) {
 			document.getElementById(favorites[i].id).className = (favorites[i].class);
 		}
-	}
+	};
 
 	function getRandom(x) {
 		return parseInt(Math.random()*x);
@@ -112,7 +112,7 @@ window.onload = function () {
 				}
 			localStorage.setItem("favorites2", JSON.stringify(favs));
 			}
-		}
+		};
 
 		setDone.addEventListener("click", setAndSaveClass);
 		removeTask.addEventListener("click", killTask);
