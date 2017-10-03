@@ -1,0 +1,78 @@
+.reset {
+    float: right;
+    box-sizing: border-box;
+    margin-right: 10px;
+}
+
+#out {
+    /* float: right; */
+    box-sizing: border-box;
+    box-shadow: 10px 16px teal	;
+    border: 8px solid #C44A4A;
+    /* border-radius: 25px; */
+    margin: 50px auto;
+    padding-left: 20px; 
+    width: 500px;
+    /* min-height: 20px; */
+    transition: all ease 1s;
+    padding-bottom: 20px; 
+    
+} 
+
+.newTask {
+    color: black;
+    font-weight: bold;
+    margin: 10px;
+}
+
+.newDiv {
+    height: 45px;
+    z-index: 100;
+    position: absolute;
+    background-color: rgba(225,225,225, 1);
+    box-sizing: border-box;
+    border: 3px solid #4D8080;
+    transition: all ease 0.25s;
+    transition-delay: 1s;
+}
+
+button {
+    float: left;
+}
+
+.newDiv button {
+    font-size: 16px;
+    margin: 10px 12px 5px 12px;
+    box-sizing: border-box;
+    box-shadow: inset -2px -2px 0px black;
+    border: none;
+    text-decoration: none;
+    background: white;
+}
+
+.done {
+    color: teal;
+}
+
+h3 {
+    margin:10px auto;
+    width: 30%;
+}
+
+li::first-letter {
+    text-transform: capitalize
+}
+
+ul {
+    box-sizing: border-box;
+    background: #EDEDED;
+    width: 104%;
+    margin-left: -20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+li {
+    padding-bottom: 7px; 
+    border-bottom: 2px solid #DBDBDB;
+}
